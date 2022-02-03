@@ -3,13 +3,13 @@ library(ggplot2)
 library(RColorBrewer)
 
 file_check <- function() {
-    if (file.exists('/home/pirthvi/Semester/Sem_3/Computing/Lab/Data.csv') == FALSE ){
-        vg_data = read.csv('/home/pirthvi/Semester/Sem_3/Computing/Lab/vgsales.csv')
+    if (file.exists('/Data.csv') == FALSE ){
+        vg_data = read.csv('/vgsales.csv')
         vg_data = filter(vg_data ,Year != 'N/A')
         print(unique(vg_data$Year))
         vg_data = arrange(vg_data,Year)
         vg_data = subset(vg_data , select = -Rank)
-        write.csv(vg_data,'/home/pirthvi/Semester/Sem_3/Computing/Lab/Data.csv')
+        write.csv(vg_data,'/Data.csv')
     }
 }
 
@@ -170,7 +170,7 @@ forecast <- function(vgdata) {
 
 
 file_check()
-vg_data <- read.csv('/home/pirthvi/Semester/Sem_3/Computing/Lab/Data.csv' , sep = ',' , header = TRUE)
+vg_data <- read.csv('/Data.csv' , sep = ',' , header = TRUE)
 str(vg_data)
 graph_plot(vg_data)
 series_plot(vg_data)
